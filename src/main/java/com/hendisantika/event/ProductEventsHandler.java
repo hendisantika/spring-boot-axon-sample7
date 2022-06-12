@@ -1,6 +1,8 @@
 package com.hendisantika.event;
 
 import org.axonframework.config.ProcessingGroup;
+import org.axonframework.eventhandling.EventHandler;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
 /**
@@ -20,6 +22,15 @@ public class ProductEventsHandler {
 
     public ProductEventsHandler(ProductRepository productRepository) {
         this.productRepository = productRepository;
+    }
+
+    @EventHandler
+    public void on(ProductCreatedEvent event) throws Exception {
+        Product product =
+                new Product();
+        BeanUtils.copyProperties(event, product);
+        productRepository.save(product);
+        throw new Exception("Exception Occurred");
     }
 
 }

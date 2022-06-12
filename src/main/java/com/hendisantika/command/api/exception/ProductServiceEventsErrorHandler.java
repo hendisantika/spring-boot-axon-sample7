@@ -1,4 +1,4 @@
-package com.hendisantika.exception;
+package com.hendisantika.command.api.exception;
 
 import org.axonframework.eventhandling.EventMessage;
 import org.axonframework.eventhandling.EventMessageHandler;

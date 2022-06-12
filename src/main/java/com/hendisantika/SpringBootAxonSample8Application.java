@@ -1,6 +1,6 @@
 package com.hendisantika;
 
-import com.hendisantika.exception.ProductServiceEventsErrorHandler;
+import com.hendisantika.command.api.exception.ProductServiceEventsErrorHandler;
 import org.axonframework.config.EventProcessingConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;

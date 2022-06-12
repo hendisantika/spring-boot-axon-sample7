@@ -1,4 +1,4 @@
-package com.hendisantika.event;
+package com.hendisantika.command.api.event;
 
 import com.hendisantika.command.api.data.Product;
 import com.hendisantika.command.api.data.ProductRepository;

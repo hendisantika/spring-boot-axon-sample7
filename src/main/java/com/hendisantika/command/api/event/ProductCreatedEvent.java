@@ -1,7 +1,9 @@
-package com.hendisantika.model;
+package com.hendisantika.command.api.event;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
@@ -12,11 +14,15 @@ import java.math.BigDecimal;
  * Email: hendisantika@gmail.com
  * Telegram : @hendisantika34
  * Date: 12/06/22
- * Time: 19.33
+ * Time: 19.34
  */
 @Data
 @Builder
-public class ProductRestModel {
+@AllArgsConstructor
+@NoArgsConstructor
+public class ProductCreatedEvent {
+
+    private String productId;
     private String name;
     private BigDecimal price;
     private Integer quantity;

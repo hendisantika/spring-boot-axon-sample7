@@ -2,6 +2,7 @@ package com.hendisantika.event;
 
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
+import org.axonframework.messaging.interceptors.ExceptionHandler;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
@@ -33,4 +34,8 @@ public class ProductEventsHandler {
         throw new Exception("Exception Occurred");
     }
 
+    @ExceptionHandler
+    public void handle(Exception exception) throws Exception {
+        throw exception;
+    }
 }

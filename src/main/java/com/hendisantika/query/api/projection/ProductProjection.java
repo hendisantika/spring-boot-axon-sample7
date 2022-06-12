@@ -1,7 +1,13 @@
 package com.hendisantika.query.api.projection;
 
+import com.hendisantika.command.api.data.Product;
 import com.hendisantika.command.api.data.ProductRepository;
+import com.hendisantika.command.api.model.ProductRestModel;
+import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by IntelliJ IDEA.
@@ -19,5 +25,23 @@ public class ProductProjection {
 
     public ProductProjection(ProductRepository productRepository) {
         this.productRepository = productRepository;
+    }
+
+    @QueryHandler
+    public List<ProductRestModel> handle(GetProductsQuery getProductsQuery) {
+        List<Product> products =
+                productRepository.findAll();
+
+        List<ProductRestModel> productRestModels =
+                products.stream()
+                        .map(product -> ProductRestModel
+                                .builder()
+                                .quantity(product.getQuantity())
+                                .price(product.getPrice())
+                                .name(product.getName())
+                                .build())
+                        .collect(Collectors.toList());
+
+        return productRestModels;
     }
 }

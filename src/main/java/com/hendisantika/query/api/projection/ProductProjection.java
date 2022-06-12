@@ -3,6 +3,7 @@ package com.hendisantika.query.api.projection;
 import com.hendisantika.command.api.data.Product;
 import com.hendisantika.command.api.data.ProductRepository;
 import com.hendisantika.command.api.model.ProductRestModel;
+import com.hendisantika.query.api.query.GetProductsQuery;
 import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.stereotype.Component;
 
@@ -29,19 +30,14 @@ public class ProductProjection {
 
     @QueryHandler
     public List<ProductRestModel> handle(GetProductsQuery getProductsQuery) {
-        List<Product> products =
-                productRepository.findAll();
-
-        List<ProductRestModel> productRestModels =
-                products.stream()
-                        .map(product -> ProductRestModel
-                                .builder()
-                                .quantity(product.getQuantity())
-                                .price(product.getPrice())
-                                .name(product.getName())
-                                .build())
-                        .collect(Collectors.toList());
-
-        return productRestModels;
+        List<Product> products = productRepository.findAll();
+        return products.stream()
+                .map(product -> ProductRestModel
+                        .builder()
+                        .quantity(product.getQuantity())
+                        .price(product.getPrice())
+                        .name(product.getName())
+                        .build())
+                .collect(Collectors.toList());
     }
 }

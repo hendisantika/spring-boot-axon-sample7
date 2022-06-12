@@ -1,5 +1,7 @@
 package com.hendisantika.event;
 
+import com.hendisantika.command.api.data.Product;
+import com.hendisantika.command.api.data.ProductRepository;
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.messaging.interceptors.ExceptionHandler;

@@ -1,5 +1,6 @@
 package com.hendisantika.command.api.aggregate;
 
+import com.hendisantika.command.api.command.CreateProductCommand;
 import com.hendisantika.command.api.event.ProductCreatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;

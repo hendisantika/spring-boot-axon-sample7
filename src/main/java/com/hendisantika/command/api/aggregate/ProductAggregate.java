@@ -2,6 +2,7 @@ package com.hendisantika.command.api.aggregate;
 
 import com.hendisantika.command.api.event.ProductCreatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
+import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
@@ -39,5 +40,13 @@ public class ProductAggregate {
     }
 
     public ProductAggregate() {
+    }
+
+    @EventSourcingHandler
+    public void on(ProductCreatedEvent productCreatedEvent) {
+        this.quantity = productCreatedEvent.getQuantity();
+        this.productId = productCreatedEvent.getProductId();
+        this.price = productCreatedEvent.getPrice();
+        this.name = productCreatedEvent.getName();
     }
 }
